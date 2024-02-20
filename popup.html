@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posture Check!</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        input, button, .switch {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px; /* Adjusted font size for all input, button */
+        }
+        input[type="number"] {
+            width: 100%; /* Adjusted to take full width */
+            padding: 15px; /* Increased padding for a larger touch area */
+            margin-right: 10px; /* Adjust if needed */
+            border: 2px solid #ccc; /* Made border thicker for visibility */
+            border-radius: 8px; /* Increased border-radius for a softer look */
+            box-sizing: border-box;
+            font-size: 1.25rem; /* Increased font size for better readability */
+            height: 50px; /* Increased height for easier interaction */
+            /* Additional styles for better visual feedback */
+            outline: none; /* Removes the default focus outline */
+            transition: border-color 0.3s; /* Smooth transition for visual feedback */
+        }
+
+        /* Adding focus style for better visual feedback */
+        input[type="number"]:focus {
+            border-color: #f78da7; /* Change border color on focus to match the slider */
+        }
+
+        button {
+            background-color: #f78da7;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #f78da7;
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #f78da7;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        #timeLeft {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #f78da7; /* Match slider color */
+        }
+        #pixelCat {
+            font-family: "Courier New", monospace;
+            white-space: pre;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="alarmFrequency" placeholder="Alarm frequency in minutes" min="1" style="margin-right: 10px; font-size: 20px; padding: 12px;">
+    <button id="submitFrequency">Set Frequency</button>
+    <div style="margin-top: 10px;">
+        <span>Off</span>
+        <label class="switch">
+            <input type="checkbox" id="toggleAlarm">
+            <span class="slider round"></span>
+        </label>
+        <span>On</span>
+    </div>
+    <p id="timeLeft"></p>
+    <pre id="pixelCat">
+      /\_/\  
+     ( o.o ) 
+    > ^ <
+    </pre>
+    <script defer src="popup.js"></script>
+</body>
+</html>

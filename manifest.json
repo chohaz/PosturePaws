@@ -1,0 +1,19 @@
+{
+    "name": "PosturePaws",
+    "version": "1.0.0",
+    "description": "Posture Reminder",
+    "manifest_version": 3,
+    "author": "Hazel Cho",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "notifications",
+        "storage",
+        "alarms"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Posture Reminder"
+    }
+}
